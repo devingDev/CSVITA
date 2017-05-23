@@ -1,0 +1,1 @@
+perl -i -pe 's/\b(\d+)(?=\D*$)/$1+1/e' filename

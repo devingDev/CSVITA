@@ -1,0 +1,1 @@
+#define DEFINED_VERSION "00.00.00.97b"
