@@ -41,9 +41,10 @@ void MultiplayerGame::Draw(){
 	}
 	debugNetPrintf(DEBUG,"MultiplayerGame Draw : for loop end \n");
 	
-	//debugNetPrintf(DEBUG,"MultiplayerGame Draw : vita2d_draw_texture \n");
-	//vita2d_draw_texture(imagePlayer, 64 , 64);
-	
+	if(imagePlayer != NULL){
+		debugNetPrintf(DEBUG,"MultiplayerGame Draw : vita2d_draw_texture \n");
+		vita2d_draw_texture(imagePlayer, 64 , 64);
+	}
 	
 	debugNetPrintf(DEBUG,"MultiplayerGame Draw : vita2d_draw_rectangle \n");
 	vita2d_draw_rectangle(32, 32, 32, 48, RGBA8(0x99, 0xFF, 0xF3, 0xFF));
@@ -91,6 +92,14 @@ MultiplayerGame::MultiplayerGame(){
 	
 	debugNetPrintf(DEBUG,"loading imagePlayer with vita2d_load_PNG_file(path)\n");
 	imagePlayer = vita2d_load_PNG_file(imagePlayerPath.c_str());
+	
+	if(imagePlayer != NULL){
+		debugNetPrintf(DEBUG,"imagePlayer was loaded!\n");
+	}else{
+		debugNetPrintf(DEBUG,"imagePlayer == NULL  , was not loaded!\n");
+	}
+	
+	
 	//
 	players.resize(MAX_PLAYERS_);
 	
