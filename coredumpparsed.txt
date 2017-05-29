@@ -1,0 +1,77 @@
+=== THREADS ===
+    CSVT01337
+        ID: 0x40010003
+        Stop reason: 0x30004 (Data abort exception)
+        Status: 0x1 (Running)
+        PC: 0xe0083ff8 (SceGxm@1 + 0x1abf8)
+    SceCommonDialogWorker
+        ID: 0x40010073
+        Stop reason: 0x0 (No reason)
+        Status: 0x8 (Waiting)
+        PC: 0xe00122f4 (SceLibKernel@1 + 0x6304)
+    SceGxmDisplayQueue
+        ID: 0x400100e1
+        Stop reason: 0x0 (No reason)
+        Status: 0x8 (Waiting)
+        PC: 0xe0012704 (SceLibKernel@1 + 0x6714)
+
+=== THREAD "CSVT01337" <0x40010003> CRASHED (Data abort exception) ===
+REGISTERS:
+    R0: 0x0
+    R1: 0x50
+    R2: 0x811c2150
+    R3: 0x58
+    R4: 0x83500000
+    R5: 0x811c2190
+    R6: 0x0
+    R7: 0x83500050
+    R8: 0x0
+    R9: 0xdeadbeef
+    R10: 0xdeadbeef
+    R11: 0xdeadbeef
+    R12: 0xe0083ff8
+    SP: 0x8127d238
+    PC: 0xe0083ff8 (SceGxm@1 + 0x1abf8)
+    LR: 0x810ad357 (csvita@1 + 0x44357)
+
+STACK CONTENTS AROUND SP:
+          0x8127d1f8: 0x18
+          0x8127d1fc: 0xe006e6ac (SceGxm@1 + 0x52ac)
+          0x8127d200: 0x703ec010
+          0x8127d204: 0xc6be072d
+          0x8127d208: 0x81604fd0
+          0x8127d20c: 0x81604fd0
+          0x8127d210: 0x70125000
+          0x8127d214: 0x0
+          0x8127d218: 0x811c2190 (csvita@2 + 0x2190)
+          0x8127d21c: 0x0
+          0x8127d220: 0x8127d280
+          0x8127d224: 0x0
+          0x8127d228: 0xdeadbeef
+          0x8127d22c: 0xdeadbeef
+          0x8127d230: 0x83500000
+          0x8127d234: 0x811c2190 (csvita@2 + 0x2190)
+    SP => 0x8127d238: 0x81207ca0 (csvita@2 + 0x47ca0)
+          0x8127d23c: 0x0
+          0x8127d240: 0x42800000
+          0x8127d244: 0x42800000
+          0x8127d248: 0x8127d280
+          0x8127d24c: 0x703ec0b0
+          0x8127d250: 0x811c00c0 (csvita@2 + 0xc0)
+          0x8127d254: 0x7f80dead
+          0x8127d258: 0x7ff8dead
+          0x8127d25c: 0x7f80dead
+          0x8127d260: 0x7ff8dead
+          0x8127d264: 0x7f80dead
+          0x8127d268: 0x7ff8dead
+          0x8127d26c: 0x0
+          0x8127d270: 0x1
+          0x8127d274: 0x81280f98
+          0x8127d278: 0x8127d280
+          0x8127d27c: 0x81071721 (csvita@1 + 0x8721)
+          0x8127d280: 0xdeadbeef
+          0x8127d284: 0x8127e928
+          0x8127d288: 0xdeadbeef
+          0x8127d28c: 0x20
+          0x8127d290: 0x8127d298
+          0x8127d294: 0x8107175d (csvita@1 + 0x875d)

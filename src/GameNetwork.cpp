@@ -6,6 +6,8 @@
 
 #include <psp2/net/net.h>
 #include <psp2/net/netctl.h>
+#include <debugnet.h>
+
 
 #include <pthread.h>
 #include <stdio.h>
@@ -17,6 +19,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h> 
+
 
 #include "GameNetwork.hpp"
 #include "Player.hpp"
@@ -50,8 +53,8 @@ void GameNetwork::startPthreadNetwork(std::string ipS , int portS , unsigned cha
 	//ServerIpString 	= 	SRV_IPO;
 	//ServerPort 		= 	PORTO;
 	
-	sceSysmoduleLoadModule(SCE_SYSMODULE_NET);
-	SceNetInitParam netInitParam;
+	sceSysmoduleLoadModule(SCE_SYSMODULE_NET);   // TODO !! CHECK IF THIS IS NEEDED BCZ HTTP LOADS NET MODULE ALREADY !!!!
+	SceNetInitParam netInitParam;   //
 	int size = 2*1024*1024;
 	netInitParam.memory = malloc(size);
 	netInitParam.size = size;
@@ -92,14 +95,17 @@ void *GameNetwork::UdpConnectAndTestPackets() {
 	sockfd = socket(AF_INET, SOCK_DGRAM, 0);
 	if (sockfd < 0) {
         werror("ERROR opening socket");
+		debugNetPrintf(ERROR,"Socket sockfd = %d \n" , sockfd);
 		pthread_exit(NULL);
 	}
+	debugNetPrintf(DEBUG,"Socket sockfd = %d \n" , sockfd);
 	
 	server = gethostbyname(ServerIpString.c_str());
     if (server == NULL) {
         sceKernelDelayThread(2*1000000);
 		pthread_exit(NULL);
     }
+	debugNetPrintf(DEBUG,"Socket server != null");
 	
 	bzero((char *) &serveraddr, sizeof(serveraddr));
 	serveraddr.sin_family = AF_INET;

@@ -47,7 +47,8 @@ void MultiplayerLobbyMenu::moveInput(int x , int y){
 }
 
 void MultiplayerLobbyMenu::joinServer(){
-	
+	ip = serverIps[selected_entry];
+	port = serverPorts[selected_entry];
 }
 
 ApplicationState MultiplayerLobbyMenu::enter(){
@@ -55,6 +56,7 @@ ApplicationState MultiplayerLobbyMenu::enter(){
 	ApplicationState s = multiplayerlobbymenu;
 	
 	if(server_amount > 0){
+		s = ingamemulti;
 		joinServer();
 	}
 	

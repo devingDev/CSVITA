@@ -47,6 +47,9 @@ class MultiplayerLobbyMenu{
 		SceUInt waitMoveInput = 125000;
 		SceUInt waitEnter = 250000;
 		SceUInt waitBack = 250000;
+		
+		std::string ip = "37.120.174.141";
+		int port = 50000;
 	
 		std::string serverslisttext;
 		

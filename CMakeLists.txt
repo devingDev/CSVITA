@@ -32,12 +32,21 @@ set(VITA_VERSION  "13.37")
 ## Flags and includes for building
 # Note that we make sure not to overwrite previous flags
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu11 -Wall")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fpermissive -Wall")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -I/usr/home/jonnydepp/programming/vita/csvita2/Box2D -fpermissive -Wall")
 # Optional. You can specify more param.sfo flags this way.
 set(VITA_MKSFOEX_FLAGS "${VITA_MKSFOEX_FLAGS} -d PARENTAL_LEVEL=1")
 
 # Add any additional include paths here
 include_directories(
+  #./Box2D
+  #./Box2D/Rope
+  #./Box2D/Dynamics
+  #./Box2D/Dynamics/Contacts
+  #./Box2D/Dynamics/Joints
+  #./Box2D/Common
+  #./Box2D/Collision
+  #./Box2D/Collision/Shapes
+  #.
   ../common
 )
 
@@ -45,11 +54,18 @@ include_directories(
 # ${CMAKE_CURRENT_BINARY_DIR} lets you use any library currently being built
 link_directories(
   ${CMAKE_CURRENT_BINARY_DIR}
+  /usr/local/include/Box2D
+  #${CMAKE_SOURCE_DIR}/libbox2d.a
+  #/usr/home/jonnydepp/programming/vita/csvita2/Box2D
+  #${Box2D_SOURCE_DIR}
 )
 
 ## Build and link
 # Add all the files needed to compile here
+
+file(GLOB_RECURSE SRCS ./Box2D/*.cpp)
 add_executable(csvita
+  src/MultiplayerGame.cpp
   src/main.cpp
   src/Player.cpp
   src/CSVitaGame.cpp
@@ -60,7 +76,9 @@ add_executable(csvita
   src/MainMenu.cpp
   src/MultiplayerLoginMenu.cpp
   src/MultiplayerLobbyMenu.cpp
+  ${SRCS}
 )
+
 
 # Library to link to (drop the -l prefix). This will mostly be stubs.
 target_link_libraries(csvita
@@ -77,6 +95,7 @@ target_link_libraries(csvita
   SceLibKernel_stub
   SceSysmodule_stub
   SceCommonDialog_stub
+  debugnet
   c
   m
   z

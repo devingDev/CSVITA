@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/csh
 
 setenv VITASDK /usr/local/vitasdk
 setenv PATH /usr/local/vitasdk/bin:$PATH

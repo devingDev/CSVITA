@@ -3,11 +3,12 @@
 
 
 #include "Player.hpp"
+#include "../Box2D/Box2D.h"
 
 const float DEFAUL_TURN_AMOUNT = 0.0125f;
 const unsigned char DEFAULT_CAL = 127;
-const int DEFAULT_X_POS = 50;
-const int DEFAULT_Y_POS = 50;
+const int DEFAULT_X_POS = -9999;
+const int DEFAULT_Y_POS = -9999;
 const int DEFAULT_HP = 100;
 unsigned char ANALOG_X_THRESHOLD_MIN = 126;
 unsigned char ANALOG_X_THRESHOLD_MAX = 128;

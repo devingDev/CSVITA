@@ -10,6 +10,7 @@
 #include "MainMenu.hpp"
 #include "MultiplayerLoginMenu.hpp"
 #include "MultiplayerLobbyMenu.hpp"
+#include "MultiplayerGame.hpp"
 
 class CSVitaGame{
 	
@@ -22,6 +23,7 @@ class CSVitaGame{
 		MainMenu mainMenu;
 		MultiplayerLoginMenu multiplayerLoginMenu;
 		MultiplayerLobbyMenu multiplayerLobbyMenu;
+		MultiplayerGame multiplayerGame;
 		
 		vita2d_pgf *pgf;
 		std::string imageMenuBGPath = "app0:images/csmenubackground.png";;

@@ -9,8 +9,22 @@
 #include "MultiplayerLoginMenu.hpp"
 #include "MultiplayerLobbyMenu.hpp"
 
+#include "MultiplayerGame.hpp"
+
+
+#include <debugnet.h>
+
+
+void DebugNetDEBUG(char* arr){
+	
+			debugNetPrintf(DEBUG,arr);
+}
+
+
 CSVitaGame::CSVitaGame(){
 	// ??
+	
+	
 	
 }
 
@@ -28,10 +42,12 @@ void CSVitaGame::Start(){
 	// Init stuff
 	// CTRL
 	vitaPad.Read();
+	DebugNetDEBUG("Initializing Http!\n");
 	// NET+HTTP (note : net socket does not need an extra init for sys module as NET module is loaded for http already!)
 	gameHttp.Init();
 	
 	// vita2d
+	DebugNetDEBUG("Initializing vita2d and other things!\n");
 	vita2d_init();
 	vita2d_set_clear_color(RGBA8(0x40, 0x40, 0x40, 0xFF));
 	pgf = vita2d_load_default_pgf();
@@ -42,13 +58,18 @@ void CSVitaGame::Start(){
 	multiplayerLoginMenu.passHTTP(gameHttp);
 	multiplayerLobbyMenu.passPGF(pgf);
 	multiplayerLobbyMenu.passHTTP(gameHttp);
+	multiplayerGame.passVitaPad(vitaPad);
 	
 	// set state and start loop
 	applicationState = mainmenu;
+	
+	DebugNetDEBUG("Start GameLoop(); !\n");
 	GameLoop();
 	
+	DebugNetDEBUG("Finished GameLoop(); !\n");
 
 	
+	DebugNetDEBUG("Finish vita2d; !\n");
 	vita2d_fini();
 	vita2d_free_texture(imageMenuBG);
 	vita2d_free_pgf(pgf);
@@ -64,9 +85,12 @@ void CSVitaGame::Start(){
 int menuPressDX , menuPressDY;
 bool menuPressEnter , menuPressBack;
 
+
+
 void CSVitaGame::GameLoop(){
 	
 
+	DebugNetDEBUG("Starting app loop!\n");
 	while(applicationState != quit){
 		
 		// MENUs START
@@ -125,9 +149,9 @@ void CSVitaGame::GameLoop(){
 			}
 			
 			
-			
 			vita2d_end_drawing();
 			vita2d_swap_buffers();
+			
 		}
 		
 		// MENU END
@@ -135,12 +159,16 @@ void CSVitaGame::GameLoop(){
 		// GAME START
 		if(applicationState == ingamemulti){
 			
+			
+			multiplayerGame.Loop();
+			
 		}else if(applicationState == ingamesingle){
 			
 		}
 		
 	}
 	
+	DebugNetDEBUG("Stopped app loop!\n");
 	
 	
 }

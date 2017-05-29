@@ -1,0 +1,5 @@
+/home/jonnydepp/programming/vita/csvita2/CMakeFiles/rebuild_cache.dir
+/home/jonnydepp/programming/vita/csvita2/CMakeFiles/edit_cache.dir
+/home/jonnydepp/programming/vita/csvita2/CMakeFiles/csvita.vpk.dir
+/home/jonnydepp/programming/vita/csvita2/CMakeFiles/csvita.self.dir
+/home/jonnydepp/programming/vita/csvita2/CMakeFiles/csvita.dir

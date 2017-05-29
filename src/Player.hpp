@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include <string>
+#include "../Box2D/Box2D.h"
 
 class Player
 {
@@ -21,8 +22,14 @@ class Player
 	  Player();
 	  Player(unsigned char cal_x , unsigned char cal_y);
 	  Player(int x , int y , int hp);
+	  b2FixtureDef fixtureDef;
+	  b2BodyDef bodyDef;
+	  b2PolygonShape dynamicBox;
+	  b2Body* body;
+	  bool isInServer;
 	  
 	private:
+	
 	  int x;
 	  int y;
 	  float xF;
